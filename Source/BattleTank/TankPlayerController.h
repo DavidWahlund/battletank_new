@@ -7,6 +7,8 @@
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h" //must be the last include
 
+
+
 /**
  * 
  */
@@ -19,5 +21,13 @@ public:
 	ATank* GetControlledTank() const; //(getter method)const because it wont need to change any member variables of ATankPlayerController class.
 
 	virtual void BeginPlay() override; //( BeginPlay()from AActor) virtual keyword (V) in the API means that it can overriden.
+
+									   // Called every frame
+	virtual void Tick(float DeltaTime) override; //override checks that there is a method like: Tick(float DeltaTime) in the parent class or parent-parent-etc class. 
 	
+private:
+
+	//Start the tank moving the barrel so that a shot would hit
+	//where crosshair intersect the world
+	void AimTowardsCrosshair();
 };
